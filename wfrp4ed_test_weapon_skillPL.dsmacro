@@ -3,4 +3,30 @@
 #
 # Użycie: Napisz !aNN (gdzie NN to wartość Twojej aktualnej cechy WW/US), np. !a67
 
-!macro a([0-9]+) \1;;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);($6*10)+$5;$5i:[=$6|=10]{":bomb: Dublet! :bomb:"};":game_die: [ $5$6 / ($1) ]";$2i:[>95]{":warning: Ojoj! Krytyczna porażka!"};$2i:[<6]{":drop_of_blood: Krytyczny sukces!"};$3i:[<0]{":eyes: Pudło :eyes:"}{":dart: Trafienie  :dagger: PS: [ +$4 ]"};$3i:[<0]{" "}{$7i:[>89]{"Trafiasz w prawą nogę ($7)"}{$7i:[>79]{"Trafiasz w lewą nogę ($7)"}{$7i:[>44]{"Trafiasz w korpus ($7)"}{$7i:[>24]{"Trafiasz w prawe ramię ($7)"}{$7i:[>9]{"Trafiasz w lewe ramię ($7)"}{$7i:[>0]{"Trafiasz w głowę ($6$5)"}{"Zero Exception!"}}}}}}} 1
+# Helper
+# Jako, że nie da się tego kodu ładnie sformatować, bo po prostu nie będzie działał, rozbijam go na mniejsze kawałki
+# i dodaję opis, żeby łatwiej go było zrozumieć i modyfikować
+
+# \1;                                               # $1 - wartość testowanej umiejętności
+# 1d100;                                            # $2 - rzut kością d100 (wyniki od 1 do 100)   
+# $1-$2;                                            # $3 - różnica między testowaną wartością a rzutem, jeśli < 0 to test nieudany
+# ($1|10)-($2|10);                                  # $4 - policz stopnie sukcesu/porażki ; "|" to integer division, czyli wyciąga tylko wartość dziesiątek
+# ($2|10);                                          # $5 - wartość dziesiątek w wyrzuconym wyniku
+# $2-(($2|10)*10);                                  # $6 - wartość jedności w wyrzuconym wyniku
+# ($6*10)+$5;                                       # $7 - zamień miejscami wartość dziesiątek i jedności wyniku, np. 72 -> 27
+# $5i:[=$6|=10]{":bomb: Dublet! :bomb:"};           # sprawdź czy na obu kościach nie ma takiej samej cyfry; rzucamy 1-100, więc trzeba sprawdzić =10 na kostce dziesiątek
+# ":game_die: [ $5$6 / ($1) ]";                     # wyświetl wynik rzutu / wartość testowanej umiejki, $5 wyświetli 0 przy rzutach poniżej 10
+# $2i:[>95]{":warning: Ojoj! Krytyczna porażka!"};  # jeśli wynik rzutu w przedziale 96 - 00 (wg. zasad) to krytyczna porażka
+# $2i:[<6]{":drop_of_blood: Krytyczny sukces!"};    # jeśli wynik rzutu w przedziale 01 - 05 to krytyczny sukces                                         
+# $3i:[<0]{":eyes: Pudło :eyes:"}{":dart: Trafienie  :dagger: PS: [ +$4 ]"};  # jeśli test udany to wyświetl liczbę Poziomów Sukcesu
+# $3i:[<0]{" "}{$7i:[>89]{"Trafiasz w prawą nogę ($7)"}  # zestaw {} udających "else if", trzeba kombinować z logiką
+#              {$7i:[>79]{"Trafiasz w lewą nogę ($7)"}   # w $7 jest odwrócony rzut, na którego podstawie szuka się
+#              {$7i:[>44]{"Trafiasz w korpus ($7)"}      # lokacji trafienia w tabelce
+#              {$7i:[>24]{"Trafiasz w prawe ramię ($7)"} #
+#              {$7i:[>9]{"Trafiasz w lewe ramię ($7)"}   #
+#              {$7i:[>0]{"Trafiasz w głowę ($6$5)"}      #
+#              {"Zero Exception!"}}}}}}}                 # zero nie powinno się pojawić przy rzucie 1-100
+
+
+
+!macro a([0-9]+) \1;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);($6*10)+$5;$5i:[=$6|=10]{":bomb: Dublet! :bomb:"};":game_die: [ $5$6 / ($1) ]";$2i:[>95]{":warning: Ojoj! Krytyczna porażka!"};$2i:[<6]{":drop_of_blood: Krytyczny sukces!"};$3i:[<0]{":eyes: Pudło :eyes:"}{":dart: Trafienie  :dagger: PS: [ +$4 ]"};$3i:[<0]{" "}{$7i:[>89]{"Trafiasz w prawą nogę ($7)"}{$7i:[>79]{"Trafiasz w lewą nogę ($7)"}{$7i:[>44]{"Trafiasz w korpus ($7)"}{$7i:[>24]{"Trafiasz w prawe ramię ($7)"}{$7i:[>9]{"Trafiasz w lewe ramię ($7)"}{$7i:[>0]{"Trafiasz w głowę ($6$5)"}{"Zero Exception!"}}}}}}} 1
