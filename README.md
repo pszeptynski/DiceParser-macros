@@ -8,8 +8,9 @@ Full Dice Parser documentation: https://github.com/Rolisteam/DiceParser/blob/mas
 
 ### Warhammer Fantasy Roleplay 4th edition
 
-* Test a skill or talent
+* Test a skill or characteristic
 
 * Test your weapon skill, count SL (success levels) and show hit location
 
+All the macros also check for a double and critical success/failure.
 
