@@ -1,0 +1,10 @@
+# Discord macro for DiceParser Discord bot. Docs: https://github.com/Rolisteam/DiceParser
+# Just paste the below code in your Discor server.
+#
+# Usage: Type !aNN (where NN is your current skill/characteristic value), eg. !a67
+
+# TODO: Translate helper from PL version.
+
+
+
+!macro a([0-9]+) \1;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);($6*10)+$5;$5i:[=$6|=10]{":bomb: Double! :bomb:"};":game_die: [ $5$6 / ($1) ]";$2i:[>95]{":warning: Ouch! Critial failure !"};$2i:[<6]{":drop_of_blood: Critical success!"};$3i:[<0]{":eyes: Miss :eyes:"}{":dart: Hit!  :dagger: SL: [ +$4 ]"};$3i:[<0]{" "}{$7i:[>89]{"You hit the Right Leg ($7)"}{$7i:[>79]{"You hit the Left Leg ($7)"}{$7i:[>44]{"You hit the Body ($7)"}{$7i:[>24]{"You hit the Right Arm ($7)"}{$7i:[>9]{"You hit the Left Arm ($7)"}{$7i:[>0]{"You hit the Head ($6$5)"}{"Zero Exception!"}}}}}}} 1
