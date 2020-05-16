@@ -10,7 +10,12 @@ Full Dice Parser documentation: https://github.com/Rolisteam/DiceParser/blob/mas
 
 * Test a skill or characteristic
 
+> !t45
+
 * Test your weapon skill, count SL (success levels) and show hit location
+
+> !a70
+
 
 All the macros also check for a double and critical success/failure.
 
