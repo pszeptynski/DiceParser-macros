@@ -30,6 +30,14 @@ Full Dice Parser documentation: https://github.com/Rolisteam/DiceParser/blob/mas
 
 > !a70
 
+![critical_hit](https://raw.githubusercontent.com/pszeptynski/DiceParser-macros/master/screenshots/critical_hit.jpg)
+
+![critical_miss](https://raw.githubusercontent.com/pszeptynski/DiceParser-macros/master/screenshots/critical_miss.jpg)
+
+
+
+
+
 
 All the macros also check for a double and critical success/failure.
 
