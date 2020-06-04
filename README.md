@@ -10,7 +10,7 @@ Full Dice Parser documentation: https://github.com/Rolisteam/DiceParser/blob/mas
 
 * Test a skill or characteristic
 
-> !t45
+> !t60
 
 ![pass](https://raw.githubusercontent.com/pszeptynski/DiceParser-macros/master/screenshots/pass.jpg)
 
@@ -28,7 +28,7 @@ Full Dice Parser documentation: https://github.com/Rolisteam/DiceParser/blob/mas
 
 * Test your weapon skill, count SL (success levels) and show hit location
 
-> !a70
+> !a55
 
 ![critical_hit](https://raw.githubusercontent.com/pszeptynski/DiceParser-macros/master/screenshots/critical_hit.jpg)
 
