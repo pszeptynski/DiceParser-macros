@@ -4,4 +4,4 @@
 #
 # Użycie: Napisz !tNN (gdzie NN to wartość Twojej aktualnej cechy/umiejętności), np. !t67
 
-!macro t([0-9]+) \1;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);$5i:[=$6|=10]{":bomb: Dublet! :bomb:"};":game_die: [ $5$6 / ($1) ]";$2i:[>95]{":skull: Ojoj! Krytyczna porażka!"};$2i:[<6]{":star_struck:  Wunderbar! Krytyczny sukces!"};$3i:[>=0]{":white_check_mark: Test zdany!  PS: [ +$4 ]"}{":no_entry: Uch, porażka   PS: [ $4 ]"} 1
+!macro add t([0-9]+) "\1;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);$5i:[=$6|=10]{\":bomb: Dublet! :bomb:\"};\":game_die: [ $5$6 / ($1) ]\";$2i:[>95]{\":skull: Ojoj! Krytyczna porażka!\"};$2i:[<6]{\":star_struck:  Wspaniale! Krytyczny sukces!\"};$3i:[>=0]{\":white_check_mark: Test zdany!  PS: [ +$4 ]\"}{\":no_entry: Uch, porażka   PS: [ $4 ]\"}" True
