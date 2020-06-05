@@ -3,4 +3,4 @@
 #
 # Usage: Type !tNN (where NN is your current skill/characteristic value), eg. !t67
 
-!macro t([0-9]+) \1;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);$5i:[=$6|=10]{":bomb: Double! :bomb:"};":game_die: [ $5$6 / ($1) ]";$2i:[>95]{":skull: Ouch! Critical failure!"};$2i:[<6]{":star_struck:  Great! Critical success!"};$3i:[>=0]{":white_check_mark: Test passed!  SL: [ +$4 ]"}{":no_entry: Test failed   SL: [ $4 ]"} 1
+!macro add t([0-9]+) "\1;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);$5i:[=$6|=10]{\":bomb: Double! :bomb:\"};\":game_die: [ $5$6 / ($1) ]\";$2i:[>95]{\":skull: Ouch! Critical failure!\"};$2i:[<6]{\":star_struck:  Great! Critical success!\"};$3i:[>=0]{\":white_check_mark: Test passed!  SL: [ +$4 ]\"}{\":no_entry: Test failed   SL: [ $4 ]\"}" True
