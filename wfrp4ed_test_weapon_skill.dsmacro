@@ -5,7 +5,7 @@
 
 # Help section
 # As it is not possible to format the macro code - it will simply not work with any whitespaces between commands
-# and semicolons - I have just broken it into smaller fragment for easier understanding and modification
+# and semicolons - I have just broken it into smaller fragments for easier understanding and modification
 
 # \1;                                                    # $1 - value of skill to be tested (WS/BS)
 # 1d100;                                                 # $2 - dice roll (score 1 to 100)   
