@@ -1,0 +1,31 @@
+# Discord macro for DiceParser Discord bot. Docs: https://github.com/Rolisteam/DiceParser
+# Just paste the below code in your Discord server.
+#
+# Usage: Type !aNN (where NN is your current weapon/ballistic skill), eg. !a67
+
+# Help section
+# As it is not possible to format the macro code - it will simply not work with any whitespaces between commands
+# and semicolons - I have just broken it into smaller fragments for easier understanding and modification
+
+# \1;                                                    # $1 - value of skill to be tested (WS/BS)
+# 1d100;                                                 # $2 - dice roll (score 1 to 100)   
+# $1-$2;                                                 # $3 - difference between skill value and dice roll, if < 0 test has failed
+# ($1|10)-($2|10);                                       # $4 - count Degrees of Success/Failure ; "|" is integer division here, so we get vaule of tens
+# ($2|10);                                               # $5 - value of tens in dice roll score
+# $2-(($2|10)*10);                                       # $6 - value of ones in dice roll score
+# ($6*10)+$5;                                            # $7 - switch places of ones and tens, eg. 72 -> 27, needed to get hit location
+# ":game_die: [ $5$6 / ($1) ]";                          # show dice roll / skill value, $5 displays 0 when score is < 10
+# $2i:[=100]{":warning: Ouch! Critical failure!"};       # score 96 - 00 is critical failure
+# $2i:[=1]{":drop_of_blood: Critical success!"};         # score 01 - 05 is critical success                                         
+# $3i:[<0]{":eyes: Miss :eyes:"}{":dart: Hit!  :dagger: DoS: [ +$4 ]"};  # if you score a hit, display Degrees of Success value
+# $3i:[<0]{" "}{$7i:[>85]{"You hit the Left Leg ($7)"}   # if missed, don't waste processor time for other else-ifs
+#              {$7i:[>70]{"You hit the Right Leg ($7)"}  # collection of {} mocking "else if"
+#              {$7i:[>30]{"You hit the Body ($7)"}       # $7 keeps reversed score that is used to find a hit location
+#              {$7i:[>20]{"You hit the Left Arm ($7)"}   # in hit locations table (in the manual)
+#              {$7i:[>10]{"You hit the Right Arm ($7)"}  #
+#              {$7i:[>0]{"You hit the Head ($6$5)"}      #
+#              {"Zero Exception!"}}}}}}}                 # you should not get 0 using d100 in DiceParser
+
+
+
+!macro add a([0-9]+) "\1;1d100;$1-$2;($1|10)-($2|10);($2|10);$2-(($2|10)*10);($6*10)+$5;\":game_die: [ $5$6 / ($1) ]\";$2i:[=100]{\":warning: Ouch! Critical failure!\"};$2i:[=1]{\":drop_of_blood: Critical success!\"};$3i:[<0]{\":eyes: Miss :eyes:\"}{\":dart: Hit!  :dagger: DoS: [ +$4 ]\"};$3i:[<0]{\" \"}{$7i:[>85]{\"You hit the Left Leg ($7)\"}{$7i:[>70]{\"You hit the Right Leg ($7)\"}{$7i:[>30]{\"You hit the Body ($7)\"}{$7i:[>20]{\"You hit the Left Arm ($7)\"}{$7i:[>10]{\"You hit the Right Arm ($7)\"}{$7i:[>0]{\"You hit the Head ($6$5)\"}{\"Zero Exception!\"}}}}}}}" True
