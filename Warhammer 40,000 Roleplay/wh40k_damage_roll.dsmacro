@@ -1,0 +1,10 @@
+# Discord macro for DiceParser Discord bot. Docs: https://github.com/Rolisteam/DiceParser
+# Just paste the below code in your Discord server. Don't try to format it, it needs to be oneliner.
+#
+# Usage: Type !XkNN+Y (where X is number of dice to roll, NN is die value/number of faces and Y is a bonus ), eg. !2k10+7 which is equivalent
+#        of rolling 2d10+7
+# You can change "k" to "d" but I preffered to not mix origina bot rolls with macro rolls
+#
+# Note: sometimes details of a roll show some strange values but the calculations are OK
+
+!macro add (\d*)k(\d+)[+]*(\d*) "[\1];\2;[\3];$1i:[=0]{1}{$1};$2i:[=0]{\"No die with 0 faces!\"}{$2};$3i:[>0]{$3};$4d\2;$7+$6;$7i.[=$5]{\":boom: Righteous Fury! :boom: Total damage: :zap: [ $8 ] :zap:  (details: bonus: +$6, dice: @7)\"}{\"Total damage: :zap: [ $8 ] :zap:  (details: bonus: +$6, dice: @7)\"} # $user" True
